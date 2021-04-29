@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  url: 'https://manager-room-api.herokuapp.com/api/v1/',
+  key: '',
 };

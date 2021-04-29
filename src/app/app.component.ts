@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'room-root',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'managerroom';
+
+  title = 'Meeting Room Manager';
+
+  public constructor(private titleService: Title) {
+    this.titleService.setTitle(this.title);
+  }
 }
