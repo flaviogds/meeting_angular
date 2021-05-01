@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'room-root',
+  selector: 'meeting-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

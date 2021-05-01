@@ -1,0 +1,33 @@
+.mat-grid-list {
+    background-color: rgb(40, 167, 57);
+}
+
+.mat-grid-tile div{
+    padding-right: 1rem;
+}
+
+.footer-container {
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-typography{
+    color: white;
+}
+
+.footer-typography p {
+    padding: 0;
+    margin: 0;
+    font-size: 0.7rem;
+}
+
+.footer-links{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.mat-icon {
+    color: white;
+    font-size: 72px;
+}

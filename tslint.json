@@ -143,13 +143,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "room",
+      "meeting",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "room",
+      "meeting",
       "kebab-case"
     ]
   }

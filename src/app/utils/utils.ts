@@ -1,25 +1,26 @@
-import { Rooms } from '../entity/room-entity';
+import { Meeting } from '../entity/meeting-entity';
 
-export function createRoomEntityList(response: any): Rooms[]{
-    return response.map((data: any) => createRoomEntity(data));
+export function createMeetingEntityList(response: any): Meeting[]{
+    return response.map((data: any) => createMeetingEntity(data));
 }
 
 const timeFormat = /^([0-9]{2}:[0-9]{2}$)/gm;
 const dateFormat = /([Z]$)/gm;
 
-export function createRoomEntity(room: any): Rooms{
+export function createMeetingEntity(meeting: any): Meeting{
     return {
-        id: room.id,
-        name: room.name,
-        date: new Date(room.date).toJSON().replace(dateFormat, ''),
-        startHour: `${room.startHour}`.replace(timeFormat, '$1:00'),
-        endHour: `${room.endHour}`.replace(timeFormat, '$1:00'),
-        invited: room.invited.map((invite: any) =>
+        id: meeting.id,
+        name: meeting.name,
+        date: new Date(meeting.date).toJSON().replace(dateFormat, ''),
+        startHour: `${meeting.startHour}`.replace(timeFormat, '$1:00'),
+        endHour: `${meeting.endHour}`.replace(timeFormat, '$1:00'),
+        guests: meeting.guests.map((invite: any) =>
         ({
             id: invite.id,
             name: invite.name,
             email: invite.email
         })),
+        status: meeting.status,
         private: false
     };
 }

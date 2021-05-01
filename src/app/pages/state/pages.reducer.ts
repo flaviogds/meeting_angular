@@ -13,7 +13,7 @@ export const initialState: StateModel = {
 const reducer = createReducer(
     initialState,
     on(
-        actions.listAllRoomsConcluded,
+        actions.listAllMeetingConcluded,
         actions.findByIdOrDateConcluded,
         (state, response) => ({...state, ...response})
     )

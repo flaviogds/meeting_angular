@@ -1,0 +1,16 @@
+.search-forms {
+    display: flex;
+}
+
+.mat-icon {
+    color: white;
+    font-size: 28px;
+}
+
+.mat-date-range-input, .mat-label, .mat-error, ::placeholder {
+    color: white !important;
+}
+
+mat-error {
+    color: white;
+}

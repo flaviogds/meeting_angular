@@ -12,7 +12,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -20,7 +19,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
-
+import { MatGridListModule } from '@angular/material/grid-list';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const MaterialComponents = [
   MatSidenavModule,
@@ -35,7 +35,6 @@ const MaterialComponents = [
   MatPaginatorModule,
   MatSortModule,
   MatAutocompleteModule,
-  MatExpansionModule,
   MatDialogModule,
   MatCardModule,
   MatTabsModule,
@@ -43,6 +42,8 @@ const MaterialComponents = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatChipsModule,
+  MatGridListModule,
+  FontAwesomeModule,
 ];
 
 @NgModule({

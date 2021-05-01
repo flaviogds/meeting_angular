@@ -1,41 +1,41 @@
 import { createAction, props } from '@ngrx/store';
-import { Rooms } from 'src/app/entity/room-entity';
+import { Meeting } from 'src/app/entity/meeting-entity';
 
-export const listAllRooms = createAction(
-    '[Rooms] List All Rooms',
+export const listAllMeeting = createAction(
+    '[Meeting] List All Meeting',
 );
 
 export const findById = createAction(
-    '[Rooms] Find By Id',
+    '[Meeting] Find By Id',
     props<{ id: string }>()
 );
 
 export const findByDate = createAction(
-    '[Rooms] Find By Date',
+    '[Meeting] Find By Date',
     props<{ date: string }>()
 );
 
 export const createMeeting = createAction(
-    '[Rooms] Create Room',
-    props<{ room: Rooms }>()
+    '[Meeting] Create Meeting',
+    props<{ meeting: Meeting }>()
 );
 
 export const editMeetingDetails = createAction(
-    '[Rooms] Edit Room',
-    props<{ room: Rooms }>()
+    '[Meeting] Edit Meeting',
+    props<{ meeting: Meeting }>()
 );
 
 export const deleteMeeting = createAction(
-    '[Rooms] Delete Room ',
+    '[Meeting] Delete Meeting ',
     props<{ id: string }>()
 );
 
-export const listAllRoomsConcluded = createAction(
-    '[Room Service] List All Rooms Concluded',
-    props<{ response: Rooms[] }>()
+export const listAllMeetingConcluded = createAction(
+    '[Meeting Service] List All Meeting Concluded',
+    props<{ response: Meeting[] }>()
 );
 
 export const findByIdOrDateConcluded = createAction(
-    '[Room Service] Find By Id Or Date Concluded',
-    props<{ room: Rooms }>()
+    '[Meeting Service] Find By Id Or Date Concluded',
+    props<{ meeting: Meeting }>()
 );

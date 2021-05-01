@@ -1,8 +1,19 @@
-.container{
-    width: 100%;
-    height: auto;
+.mat-toolbar {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.example-spacer {
+.spacer {
     flex: 1 1 auto;
-  }
+}
+.container{
+    width: 100%;
+    height: calc(100% - 4rem);
+    overflow-y: auto;
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}

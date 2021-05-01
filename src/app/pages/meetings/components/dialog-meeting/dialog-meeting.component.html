@@ -1,0 +1,96 @@
+
+<div mat-dialog-title class="dialog-title">
+    <h2 >{{ data.title }} Meeting meeting</h2>
+    <ng-container *ngIf="(meeting.id)">
+        <button mat-button autofocus (click)="excludeMeeting(meeting.id)">
+            <mat-icon color="warn">delete_forever</mat-icon>
+        </button>    
+    </ng-container>
+</div>
+
+<mat-dialog-content>
+    <div [formGroup]="meetingForms" class="form-meeting">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Meeting Title</mat-label>
+            <input matInput formControlName="name" placeholder="Name">
+            <mat-error *ngIf="meetingForms.controls.name.invalid">
+                {{getErrorMessage(meetingForms.controls, 'name')}}
+            </mat-error>
+        </mat-form-field>
+
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Date</mat-label>
+                <input matInput formControlName="date" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="meetingForms.controls.date.invalid">
+                    {{getErrorMessage(meetingForms.controls, 'date')}}
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Start</mat-label>
+                <input type="time" matInput formControlName="startHour" #time>
+                <mat-error *ngIf="meetingForms.controls.startHour.invalid">
+                    {{getErrorMessage(meetingForms.controls, 'startHour')}}
+                </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field appearance="fill">
+                <mat-label>End</mat-label>
+                <input type="time" matInput formControlName="endHour" #time>
+                <mat-error *ngIf="meetingForms.controls.endHour.invalid">
+                    {{getErrorMessage(meetingForms.controls, 'endHour')}}
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="invite-container">
+        <h3 >Invites</h3>
+        <div [formGroup]="inviteForms" class="form-invites">
+            <div class="invites">
+                <mat-form-field appearance="fill">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name">
+                    <mat-error *ngIf="inviteForms.controls.name.invalid">
+                        {{getErrorMessage(inviteForms.controls, 'name')}}
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+                    <mat-error *ngIf="inviteForms.controls.email.invalid">
+                        {{getErrorMessage(inviteForms.controls, 'email')}}
+                    </mat-error>
+                </mat-form-field>
+        
+                <button mat-flat-button color="primary" (click)="newInvite()">
+                    Add
+                </button>
+            </div>
+    
+            <mat-form-field *ngIf="invites.length>0" class="chip-list" appearance="fill">
+                <mat-label>Invites</mat-label>
+                <mat-chip-list #chipList aria-label="Person to invite">
+                    <mat-chip *ngFor="let invited of invites"
+                        [selectable]="selectable"
+                        [removable]="removable"
+                        (removed)="remove(invited)">
+                        {{invited.name}} ({{invited.email}})
+                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-form-field>
+        </div>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>CANCEL</button>
+    <button mat-button mat-dialog-close (click)="save()">SAVE</button>
+</mat-dialog-actions>

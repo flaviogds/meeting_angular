@@ -33,7 +33,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "room",
+      "prefix": "meeting",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

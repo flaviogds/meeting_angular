@@ -2,23 +2,23 @@ import { Injectable } from '@angular/core';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { RoomsService } from 'src/app/services/rooms.service';
+import { MeetingService } from 'src/app/services/meeting.service';
 import { createMeeting } from './pages.actions';
 
 @Injectable()
-export class RoomsEffects{
+export class MeetingsEffects{
 
     constructor(
         private actions$: Actions,
-        private roomService: RoomsService
+        private meetingService: MeetingService
     ){}
 
     createMeeting$ = createEffect(
         () => this.actions$
             .pipe(
                 ofType(createMeeting),
-                mergeMap(({ room }) =>
-                    this.roomService.createRoom('room', room)),
+                mergeMap(({ meeting }) =>
+                    this.meetingService.createMeeting(meeting)),
                 catchError((err, caught$) => {
                     return caught$;
                 }),

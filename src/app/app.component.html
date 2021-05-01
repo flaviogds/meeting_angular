@@ -1,29 +1,27 @@
-<div class="navbar">
-    <mat-toolbar>
-        <button
-            mat-icon-button
-            class="example-icon"
-            aria-label="Example icon-button with menu icon">
-            <mat-icon>groups</mat-icon>
-        </button>
-        <span>&#8899;</span>
-        <span class="example-spacer"></span>
-        <a
-            [routerLink]="['']"
-            routerLinkActive="active"
-            mat-icon-button class="example-icon favorite-icon"
-            aria-label="Home">
-            <mat-icon>home</mat-icon>
-        </a>
-        <a
-            [routerLink]="['/rooms']"
-            routerLinkActive="active"
-            mat-icon-button class="example-icon"
-            aria-label="Rooms Manager">
-            <mat-icon>meeting_room</mat-icon>
-        </a>
-    </mat-toolbar>
-</div>
+<mat-toolbar>
+    <a mat-icon-button
+        href="#"
+        aria-label="Groups Icon">
+        <mat-icon>groups</mat-icon>
+    </a>
+    <span>Meeting Room Manager</span>
+    <span class="spacer"></span>
+    <a [routerLink]="['']"
+        routerLinkActive="active"
+        mat-icon-button
+        matTooltip="Home"
+        aria-label="Home">
+        <mat-icon>home</mat-icon>
+    </a>
+    <a [routerLink]="['/rooms']"
+        routerLinkActive="active"
+        mat-icon-button
+        matTooltip="Manager"
+        aria-label="Rooms Manager">
+        <mat-icon>meeting_room</mat-icon>
+    </a>
+</mat-toolbar>
 <div class="container">
     <router-outlet></router-outlet>
+    <meeting-footer></meeting-footer>
 </div>

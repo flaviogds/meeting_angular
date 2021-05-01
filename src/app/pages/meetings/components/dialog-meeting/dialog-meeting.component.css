@@ -1,0 +1,38 @@
+.dialog-title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mat-dialog-content {
+  display: grid;
+}
+
+.mat-dialog-content::-webkit-scrollbar {
+  display: none;
+}
+
+.mat-form-field {
+  margin: 0.2rem;
+}
+
+.form-meeting, .form-invites {
+  display: grid;
+}
+
+.invite-container h3 {
+  color: rgba(255,255,255,.7);
+  margin-bottom: 0.2rem;
+  letter-spacing: normal;
+}
+
+.invites {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.invites .mat-flat-button {
+  margin-bottom: 0.7rem;
+}

@@ -1,11 +1,12 @@
-import { Invite } from './invite-entity';
+import { Guest } from './invite-entity';
 
-export interface Rooms {
+export interface Meeting {
     id: string | undefined;
     name: string;
     date: string;
     startHour: string;
     endHour: string;
-    invited: Invite[];
+    guests: Guest[];
     private: boolean;
+    status: string;
 }

@@ -9,18 +9,23 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { MaterialModule } from '../material/material.module';
 
 import { HomePage } from './home/home.page';
-import { RoomsPage } from './rooms/rooms.page';
+import { MeetingsPage } from './meetings/meeting.page';
+
+import { DialogMeetingComponent } from './meetings/components/dialog-meeting/dialog-meeting.component';
+import { TableMeetingComponent } from './meetings/components/table-meetings/table-meetings.component';
 
 import { featureKey } from './state/pages.selectors';
 import { reducers } from './state/pages.reducer';
-import { RoomsEffects } from './state/pages.effects';
-import { DialogRoomComponent } from './rooms/components/dialog-room/dialog-room.component';
+import { MeetingsEffects } from './state/pages.effects';
+import { SearchComponent } from './meetings/components/search-meeting/search-meeting.component';
 
 @NgModule({
   declarations: [
     HomePage,
-    RoomsPage,
-    DialogRoomComponent,
+    MeetingsPage,
+    DialogMeetingComponent,
+    TableMeetingComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +33,7 @@ import { DialogRoomComponent } from './rooms/components/dialog-room/dialog-room.
     PagesRoutingModule,
     ReactiveFormsModule,
     StoreModule.forFeature(featureKey, reducers),
-    EffectsModule.forFeature([RoomsEffects]),
+    EffectsModule.forFeature([MeetingsEffects]),
   ]
 })
 export class PagesModule { }
