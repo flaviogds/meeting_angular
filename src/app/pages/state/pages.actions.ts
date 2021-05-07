@@ -1,18 +1,13 @@
 import { createAction, props } from '@ngrx/store';
 import { Meeting } from 'src/app/entity/meeting-entity';
 
-export const listAllMeeting = createAction(
+export const listAllMeetings = createAction(
     '[Meeting] List All Meeting',
 );
 
-export const findById = createAction(
-    '[Meeting] Find By Id',
-    props<{ id: string }>()
-);
-
-export const findByDate = createAction(
-    '[Meeting] Find By Date',
-    props<{ date: string }>()
+export const listByDate = createAction(
+    '[Meeting] List All Meeting',
+    props<{ query: any }>()
 );
 
 export const createMeeting = createAction(
@@ -30,12 +25,17 @@ export const deleteMeeting = createAction(
     props<{ id: string }>()
 );
 
-export const listAllMeetingConcluded = createAction(
+export const error = createAction(
+    '[Meeting Service] Error ',
+    props<{ error: any }>()
+);
+
+export const listMeetingConcluded = createAction(
     '[Meeting Service] List All Meeting Concluded',
     props<{ response: Meeting[] }>()
 );
 
-export const findByIdOrDateConcluded = createAction(
-    '[Meeting Service] Find By Id Or Date Concluded',
-    props<{ meeting: Meeting }>()
-);
+export const responseStatusConcluded = createAction(
+    '[Meeting Service] Response Status Concluded',
+    props<{ status: any }>()
+)

@@ -1,27 +1,5 @@
-<mat-toolbar>
-    <a mat-icon-button
-        href="#"
-        aria-label="Groups Icon">
-        <mat-icon>groups</mat-icon>
-    </a>
-    <span>Meeting Room Manager</span>
-    <span class="spacer"></span>
-    <a [routerLink]="['']"
-        routerLinkActive="active"
-        mat-icon-button
-        matTooltip="Home"
-        aria-label="Home">
-        <mat-icon>home</mat-icon>
-    </a>
-    <a [routerLink]="['/rooms']"
-        routerLinkActive="active"
-        mat-icon-button
-        matTooltip="Manager"
-        aria-label="Rooms Manager">
-        <mat-icon>meeting_room</mat-icon>
-    </a>
-</mat-toolbar>
+<meeting-toolbar></meeting-toolbar>
 <div class="container">
     <router-outlet></router-outlet>
-    <meeting-footer></meeting-footer>
 </div>
+<meeting-footer></meeting-footer>

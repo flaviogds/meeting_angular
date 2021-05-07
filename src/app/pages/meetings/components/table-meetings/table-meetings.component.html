@@ -1,7 +1,7 @@
 <div class="table-container">
-  <mat-form-field>
+  <mat-form-field color="accent">
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Planning or 2021-05-05" #input>
   </mat-form-field>
 
   <table mat-table [dataSource]="dataSource" matSort>
@@ -27,6 +27,6 @@
     <tr mat-row *matRowDef="let meeting; columns: columnsToDisplay.list();" (click)="editMeeting(meeting.id)"></tr>
   </table>
 
-  <mat-paginator [length]="data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
+  <mat-paginator [length]="dataSource.data.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>  
 </div>

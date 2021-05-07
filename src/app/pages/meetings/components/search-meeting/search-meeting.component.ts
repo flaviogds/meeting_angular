@@ -8,9 +8,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SearchComponent implements OnInit {
   @Output()
-  date = new EventEmitter<string>();
+  byDate = new EventEmitter<string>();
 
   searchForms!: FormGroup;
+  controlsError: boolean;
+  query: any;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -18,27 +20,39 @@ export class SearchComponent implements OnInit {
     this.searchForms = this.formBuilder.group({
       start: [null, [Validators.required]],
       end: [null],
+      list: [false]
     });
   }
 
-  search(): void {
+  onFormSubmit(): void {
     if (this.searchForms.valid) {
-      this.date.emit(
-        `${this.searchForms.controls.start.value}|
-        ${this.searchForms.controls.end.value}`
-      );
+      const start = this.searchForms.controls.start.value;
+      const end = this.searchForms.controls.end.value;
+      const list = this.searchForms.controls.list.value ? 'all' : 'active';
+
+      this.byDate.emit(`${this.getDate(start)}|${this.getDate(end)}|${list}`);
       this.clear();
+    } else {
+      this.controlsError = true;
     }
   }
 
   getErrorMessage(): string {
-    if (this.searchForms.controls.start.hasError('required')){
+    if (this.searchForms.controls.start.hasError('required')) {
       return `Initial date is required`;
+    } else {
+      return '';
     }
-    return '';
   }
 
   private clear(): void {
     this.searchForms.reset();
+  }
+
+  private getDate(date: string): string {
+    return date ? new Date(date)
+      .toJSON()
+      .toString()
+      .replace(/T.*Z$/gm, '') : '';
   }
 }

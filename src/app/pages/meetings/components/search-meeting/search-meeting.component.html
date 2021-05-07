@@ -1,17 +1,21 @@
-<div class="serch-form">
-    <mat-form-field color="accent">
-        <mat-label>Enter a date range</mat-label>
-        <mat-date-range-input [formGroup]="searchForms" [rangePicker]="picker">
-            <input matStartDate formControlName="start" placeholder="Start date">
-            <input matEndDate formControlName="end" placeholder="End date">
-        </mat-date-range-input>
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker></mat-date-range-picker>
-        <mat-error *ngIf="searchForms.controls.start.invalid">
-            {{getErrorMessage()}}
-        </mat-error>
-    </mat-form-field>
-    <button mat-button (click)="search()">
-        <mat-icon>search</mat-icon>
-    </button>
-</div>
+<form class="form-container" [formGroup]="searchForms" (ngSubmit)="onFormSubmit()" ngNativeValidate>
+    <div class="serch-form">
+        <mat-form-field color="accent">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate formControlName="start" placeholder="Start date">
+                <input matEndDate formControlName="end" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+            <mat-error *ngIf="controlsError">
+                {{ getErrorMessage() }}
+            </mat-error>
+        </mat-form-field>
+    
+        <button mat-button type="submit">
+            <mat-icon>search</mat-icon>
+        </button>
+    </div>
+    <mat-slide-toggle formControlName="list" color="primary"> Include canceled meetings </mat-slide-toggle>
+</form>

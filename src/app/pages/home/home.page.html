@@ -1,1 +1,70 @@
-<p>home works!</p>
+<div class="header-page">
+    <div class="header-content">
+        <h1 class="header-page-title">Meeting Room Manager</h1>
+        <div class="header-page-description">
+            <p>Simple application to managment events</p>
+        </div>
+        <div class="header-page-button">
+            <button mat-raised-button [routerLink]="['/meetings']">Get Start</button>
+        </div>
+    </div>
+</div>
+
+<div class="cards-container">
+    <fa-icon class="header-image" [icon]="icons.solid.faUsers" size="10x"></fa-icon>
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title class="card-title"> Management </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="card-content">
+                <div>
+                    <p class="card-description">
+                        Organize and manage meetings wherever
+                        you are and whenever you need.
+                    </p>
+                </div>
+                <div class="card-icon">
+                    <fa-icon [icon]="icons.solid.faCogs" size="6x"></fa-icon>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title class="card-title"> Share </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="card-content">
+                <div>
+                    <p class="card-description">
+                        Share your meetings, invite your friends or coworks.
+                    </p>
+                </div>
+                <div class="card-icon">
+                    <fa-icon [icon]="icons.solid.faShareAlt" size="6x"></fa-icon>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title class="card-title"> Go beyond </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="card-content">
+                <div>
+                    <p class="card-description">
+                        Create groups, define interest, create public or
+                        private events.
+                    </p>
+                </div>
+                <div class="card-icon">
+                    <fa-icon [icon]="icons.solid.faRocket" size="6x"></fa-icon>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

@@ -1,0 +1,64 @@
+.page-title {
+  display: flex;
+  padding: 0.2rem 1rem;
+  background-color: rgb(40, 167, 57);
+  color: white !important;
+}
+
+.page-title-control {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.page-title-control h1 {
+  margin: 0;
+  margin-right: 2rem;
+  font-weight: 500;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.meeting-container {
+  width: 100%;
+  min-height: calc(100% - 11.5rem);
+}
+
+.message-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4rem;
+}
+
+.new-meeting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  padding-top: 4rem;
+}
+
+.new-meeting h4 {
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 3.5rem;
+}
+
+.new-meeting button{
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.525);
+}
+
+.new-meeting button:hover{
+  transform: scale(1.15);
+}
+
+.loading {
+  width: 100%;
+  margin: 10rem auto;
+}

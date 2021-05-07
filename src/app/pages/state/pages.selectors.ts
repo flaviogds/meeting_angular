@@ -9,3 +9,13 @@ export const selectResponse = createSelector(
     selectFeature,
     (state: StateModel) => state.response,
 );
+
+export const selectStatus = createSelector(
+    selectFeature,
+    (state: StateModel) => state.status,
+);
+
+export const selectError = createSelector(
+    selectFeature,
+    (state: StateModel) => state.error,
+);

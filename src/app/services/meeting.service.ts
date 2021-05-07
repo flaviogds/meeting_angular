@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { createMeetingEntity, createMeetingEntityList } from '../utils/utils';
 
@@ -18,50 +18,42 @@ export class MeetingService {
 
   constructor(private http: HttpClient) { }
 
-  listPublicMeeting(): Observable<Meeting[]>{
-    return this.get('')
+  listAllMeeting(): Observable<Meeting[]>{
+    return this.get('', '')
       .pipe(
         map(response => createMeetingEntityList(response)),
       );
   }
 
-  findPublicMeetingByDate( query: any ): Observable<Meeting[]>{
-    const params = new HttpParams({ fromObject: { ...query } });
+  ListMeetingByDate( query: any ): Observable<Meeting[]>{
+    if (query){
+      const params = new HttpParams({ fromObject: { ...query } });
 
-    return this.get('', params)
-      .pipe(
-        map(response => createMeetingEntityList(response)),
-      );
+      return this.get('', 'findByDate', params)
+        .pipe(
+          map(response => createMeetingEntityList(response)),
+        );
+    }
   }
 
-  findPublicMeetingById( id: string ): Observable<Meeting>{
-    return this.get(id)
+  findMeetingById( id: string ): Observable<Meeting>{
+    return this.get(id, '')
       .pipe(map(createMeetingEntity));
   }
 
-  // tslint:disable-next-line: typedef
-  createMeeting( meeting: Meeting ){
-    return this.http.post(`${this.url}/room`, meeting).pipe(
-      catchError((err, caught$) => {
-        return caught$;
-      }),
-      map(status => {
-        return status;
-      })
-    );
+  createMeeting( meeting: Meeting ): Observable<any>{
+    return this.http.post(`${this.url}/meeting`, meeting);
   }
 
-  // tslint:disable-next-line: typedef
-  updateMeeting( meeting: Meeting ){
-    return this.http.put(`${this.url}/room/${meeting.id}`, meeting);
+  updateMeeting( meeting: Meeting ): Observable<any>{
+    return this.http.put(`${this.url}/meeting/${meeting.id}`, meeting);
   }
 
-  // tslint:disable-next-line: typedef
-  deleteMeeting( id: string ){
-    return this.http.delete(`${this.url}/room/${id}`);
+  deleteMeeting( id: string ): Observable<any>{
+    return this.http.delete(`${this.url}/meeting/${id}`);
   }
 
-  private get<T>( id?: string, params?: HttpParams ): Observable<T>{
-    return this.http.get<T>(`${this.url}/room/${id}`, { params });
+  private get<T>( id?: string, endPoint?: string, params?: HttpParams ): Observable<T>{
+    return this.http.get<T>(`${this.url}/meeting/${endPoint}${id}`, { params });
   }
 }

@@ -1,4 +1,4 @@
-import { Guest } from './invite-entity';
+import { Guest } from './guest-entity';
 
 export interface Meeting {
     id: string | undefined;

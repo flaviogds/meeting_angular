@@ -1,0 +1,25 @@
+<div class="page-title">
+    <div class="page-title-control">
+        <h1>Meeting</h1>
+        <button *ngIf="(data$ | async).length > 0" mat-raised-button (click)="openCreateMeeting()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+    <span class="spacer"></span>
+    <meeting-search (byDate)="searchMeetingByDate($event)"></meeting-search>
+</div>
+<div class="meeting-container">
+    <ng-container *ngIf="data$ | async as data">
+
+        <div *ngIf="data.length === 0" class="new-meeting">
+            <h4>No meetings yet, create now.</h4>
+            <button mat-fab color="primary" (click)="openCreateMeeting()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+        <meeting-table *ngIf="data.length > 0" [data$]="data$" (edit)="openEditMeeting($event)"></meeting-table>
+    </ng-container>
+
+    <mat-spinner *ngIf="!(data$ | async)" class="loading" color="primary"></mat-spinner>
+</div>

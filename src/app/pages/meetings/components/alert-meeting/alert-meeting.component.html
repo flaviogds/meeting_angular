@@ -1,0 +1,10 @@
+<span class="alert">
+    <ng-container *ngIf="data.failed; else check">
+        <fa-icon [icon]="icon.solid.faExclamationCircle" size="1x" class="alert-error"></fa-icon>
+    </ng-container>
+    {{ data.message }}
+</span>
+
+<ng-template #check>
+    <fa-icon [icon]="icon.solid.faCheck" size="1x" class="alert-success"></fa-icon>
+</ng-template>

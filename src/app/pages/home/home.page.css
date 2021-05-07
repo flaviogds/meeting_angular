@@ -1,0 +1,88 @@
+.header-page {
+  height: 12rem;
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  background-color: rgb(40, 167, 57);
+}
+
+.header-image {
+  position: relative;
+  color: rgba(255, 255, 255, 0.1);
+  font-size: xx-large;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header-page-title {
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: white;
+}
+
+.header-page-button {
+  width: fit-content;
+  margin: 2rem auto;
+}
+
+.header-page-description {
+    font-size: 1rem;
+  font-weight: 400;
+  color: white;
+  text-align: center;
+}
+
+.cards-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem 0;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.card {
+  width: 15rem;
+  height: 20rem;
+  padding: 1.5rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.35);
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+.card-title {
+  font-size: x-large;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.card-content {
+  display: flex;
+  height: 15rem;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card-description{
+  text-indent: 1.2rem;
+  word-wrap: break-word;
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+.card-icon {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-page {
+  width: 100%;
+  height: 10rem;
+}

@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Icons } from '../../shared/fontawesome';
 
 @Component({
   selector: 'meeting-home',
   templateUrl: './home.page.html',
-  styleUrls: ['./home.page.css']
+  styleUrls: ['./home.page.css'],
 })
-export class HomePage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class HomePage {
+  icons = Icons;
 }

@@ -1,0 +1,16 @@
+.alert {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.alert-success {
+    margin-right: 0.5rem;
+    color: rgb(40, 167, 57);
+}
+
+.alert-error {
+    margin-right: 0.5rem;
+    color: rgb(255, 94, 0);
+}

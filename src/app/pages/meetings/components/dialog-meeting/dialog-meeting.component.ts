@@ -1,12 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { Store } from '@ngrx/store';
-
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { Meeting } from 'src/app/entity/meeting-entity';
-import { Guest } from 'src/app/entity/invite-entity';
+import { Guest } from 'src/app/entity/guest-entity';
 
 import { createMeetingEntity } from 'src/app/utils/utils';
 
@@ -18,22 +16,20 @@ import { createMeetingEntity } from 'src/app/utils/utils';
 export class DialogMeetingComponent implements OnInit {
   selectable = true;
   removable = true;
-  invites: Guest[] = [];
   meeting: Meeting;
+  invites: Guest[] = [];
   inviteForms!: FormGroup;
   meetingForms!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit(): void {
-    this.meeting = this.data.meeting;
+    this.meeting = { ...this.data.meeting };
 
     this.meetingForms = this.formBuilder.group({
-      id: [this.data.meeting.id],
       name: [
         this.data.meeting.name,
         [
@@ -42,7 +38,7 @@ export class DialogMeetingComponent implements OnInit {
           Validators.maxLength(50),
         ],
       ],
-      date: [this.data.meeting.date, [Validators.required]],
+      date: [this.formatDate(this.data.meeting.date), [Validators.required]],
       startHour: [this.data.meeting.startHour, [Validators.required]],
       endHour: [this.data.meeting.endHour, [Validators.required]],
     });
@@ -59,7 +55,7 @@ export class DialogMeetingComponent implements OnInit {
       email: [null, [Validators.required, Validators.email]],
     });
 
-    this.invites = this.data.meeting.guests;
+    this.invites = [...this.data.meeting.guests];
   }
 
   newInvite(): void {
@@ -72,26 +68,36 @@ export class DialogMeetingComponent implements OnInit {
     }
   }
 
-  remove(invite: Guest): void {
+  removeInvite(invite: Guest): void {
     const index = this.invites.indexOf(invite);
     if (index >= 0) {
       this.invites.splice(index, 1);
     }
   }
 
-  save(): void {
+  saveMeeting(): any {
     if (this.meetingForms.valid) {
       this.meeting = createMeetingEntity({
-        ...this.meetingForms.value,
-        guests: this.invites,
-      });
-
-      this.store.dispatch(this.data.action({ meeting: this.meeting }));
-      this.clear(this.inviteForms, this.meetingForms);
+          ...this.meeting,
+          ...this.meetingForms.value,
+          date: this.formatDate(this.meetingForms.value.date),
+          guests: this.invites
+        });
+      if (!this.unchanged(this.data.meeting, this.meeting)){
+        return {
+          action: this.data.action,
+          data: {...this.meeting}
+        };
+      }
+      else {
+        return null;
+      }
     }
   }
 
-  excludeMeeting(id: string): void{window.alert(`funfou com o id ${id}`)}
+  excludeMeeting(id: string): any {
+    return { action: 'delete', data: { id } };
+  }
 
   getErrorMessage(controls: any, key: string): string {
     if (controls[key].hasError('required')) {
@@ -108,5 +114,17 @@ export class DialogMeetingComponent implements OnInit {
 
   private clear(...forms: FormGroup[]): void {
     forms.forEach((form) => form.reset());
+  }
+
+  private formatDate(date: string): any {
+    const newDate = new Date(date)
+        .toJSON()
+        .toString()
+        .replace(/T.*Z$/gm, '');
+
+    return date ? newDate : '';
+  }
+  private unchanged(origin: Meeting, changes: Meeting): boolean{
+    return JSON.stringify(origin) === JSON.stringify(changes);
   }
 }

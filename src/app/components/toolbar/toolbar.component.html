@@ -1,0 +1,25 @@
+<mat-toolbar>
+    <a mat-icon-button
+        href="#"
+        aria-label="Groups Icon">
+        <fa-icon [icon]="icons.solid.faUsers" size="2x"></fa-icon>
+
+    </a>
+    <span>Meeting Room Manager</span>
+    <span class="spacer"></span>
+    <a [routerLink]="['']"
+        routerLinkActive="active"
+        mat-icon-button
+        matTooltip="Home"
+        aria-label="Home">
+        <fa-icon [icon]="icons.solid.faHome" size="2x"></fa-icon>
+
+    </a>
+    <a [routerLink]="['/meetings']"
+        routerLinkActive="active"
+        mat-icon-button
+        matTooltip="Manager"
+        aria-label="Meeting Manager">
+        <fa-icon [icon]="icons.solid.faUsersCog" size="2x"></fa-icon>
+    </a>
+</mat-toolbar>
