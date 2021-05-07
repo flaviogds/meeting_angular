@@ -7,7 +7,7 @@ import { createMeetingEntity, createMeetingEntityList } from '../utils/utils';
 
 import { Meeting } from '../entity/meeting-entity';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
